@@ -1,7 +1,13 @@
-import React from "react";
+"use client";
 
-function page() {
-  return <div>page</div>;
+import { useTask } from "../../context/taskContext";
+
+function Page() {
+  const values = useTask();
+
+  console.log(values);
+
+  return <div>About Page</div>;
 }
 
-export default page;
+export default Page;
