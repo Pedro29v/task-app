@@ -6,7 +6,7 @@ export const TaskContext = createContext();
 export const useTask = () => {
   const context = useContext(TaskContext);
 
-  if (!context) throw new error("useTask must used within a provider");
+  if (!context) throw new Error("useTask must used within a provider");
 
   return context;
 };
