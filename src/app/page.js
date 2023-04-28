@@ -6,8 +6,8 @@ function Page() {
   const { tasks } = useTask();
 
   return (
-    <div>
-      <h1 className="mb-10 text-[5rem]">Home Page</h1>
+    <div className="m-auto w-[80%]  ">
+      <h1 className="mb-10 text-[5rem] text-center">Home Page</h1>
       {tasks.map((e) => (
         <TaskCard
           key={e.id}

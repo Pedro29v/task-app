@@ -1,7 +1,7 @@
 import React from "react";
 
-function page() {
-  return <div>Edit task</div>;
+function page({ params }) {
+  return <div>Edit task {params.id}</div>;
 }
 
 export default page;
