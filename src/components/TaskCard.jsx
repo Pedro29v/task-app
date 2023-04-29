@@ -1,19 +1,24 @@
-import React from "react";
 import { useRouter } from "next/navigation";
+import { useTask } from "../context/taskContext";
 
 function TaskCard({ id, title, description }) {
   const router = useRouter();
+  const { deleteTask } = useTask();
 
   return (
     <>
-      <div
-        className="bg-slate-500 mb-4 p-2 w-[40rem] m-auto "
-        onClick={() => router.push(`/edit/${id}`)}
-      >
-        <h2 className="text-[2rem]">{title}</h2>
+      <div className="bg-slate-500 mb-4 p-2 w-[40rem] m-auto ">
+        <h2 onClick={() => router.push(`/edit/${id}`)} className="text-[2rem]">
+          {title}
+        </h2>
         <p>{description}</p>
         <div>
-          <button className="bg-red-500 p-2 text-center ">Delete</button>
+          <button
+            onClick={() => deleteTask(id)}
+            className="bg-red-500 p-2 text-center "
+          >
+            Delete
+          </button>
         </div>
       </div>
     </>
