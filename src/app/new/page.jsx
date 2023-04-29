@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 
 function Page({ params }) {
   const [task, setTask] = useState({ title: "", description: "" });
-  const { createTask, tasks } = useTask();
+  const { createTask, tasks, updateTask } = useTask();
   const router = useRouter();
 
   const handldeChange = (e) => {
@@ -19,7 +19,7 @@ function Page({ params }) {
     e.preventDefault();
 
     if (params.id) {
-      console.log("editando");
+      updateTask(params.id, task);
     } else {
       createTask(task.title, task.description);
     }
@@ -30,7 +30,6 @@ function Page({ params }) {
   useEffect(() => {
     if (params.id) {
       const taskFound = tasks.find((e) => e.id == params.id);
-      console.log(taskFound);
 
       if (taskFound)
         setTask({ title: taskFound.title, description: taskFound.description });

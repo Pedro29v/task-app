@@ -1,5 +1,5 @@
 "use client";
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 import { v4 as uuid } from "uuid";
 
 export const TaskContext = createContext();
@@ -13,18 +13,20 @@ export const useTask = () => {
 };
 
 export function TaskProvider({ children }) {
-  const [tasks, setTasks] = useState([
-    {
-      id: 1,
-      title: "my first task",
-      description: "some task",
-    },
-    {
-      id: 2,
-      title: "my second task",
-      description: "some second task",
-    },
-  ]);
+  const [tasks, setTasks] = useState([]);
+
+  useEffect(() => {
+    const item = localStorage.getItem("tasks");
+    const tasks = JSON.parse(item);
+
+    if (tasks.length > 0) {
+      setTasks(tasks);
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }, [tasks]);
 
   const createTask = (title, description) => {
     setTasks([
@@ -43,8 +45,14 @@ export function TaskProvider({ children }) {
     if (confirm) setTasks([...tasks.filter((e) => e.id !== id)]);
   };
 
+  const updateTask = (id, newData) => {
+    setTasks([
+      ...tasks.map((task) => (task.id == id ? { ...task, ...newData } : task)),
+    ]);
+  };
+
   return (
-    <TaskContext.Provider value={{ tasks, createTask, deleteTask }}>
+    <TaskContext.Provider value={{ tasks, createTask, deleteTask, updateTask }}>
       {children}
     </TaskContext.Provider>
   );
