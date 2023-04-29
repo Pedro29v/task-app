@@ -1,7 +1,3 @@
-import React from "react";
+import NewFormPage from "../../new/page";
 
-function page({ params }) {
-  return <div>Edit task {params.id}</div>;
-}
-
-export default page;
+export default NewFormPage;
