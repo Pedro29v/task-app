@@ -1,19 +1,23 @@
 "use client";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { useTask } from "../context/taskContext";
 
 function Navbar() {
   const router = useRouter();
+  const { tasks } = useTask();
 
   return (
     <header
       className="bg-lightBlue text-white 
     flex items-center justify-between p-4 mb-14 "
     >
-      <div className="ml-[1rem]">
+      <div className="ml-[1rem] flex items-center">
         <Link href="/">
           <h1 className="text-[2em] font-bold ">Task App</h1>
         </Link>
+
+        <p className="ml-4 mt-[1rem]">{tasks?.length} tasks</p>
       </div>
 
       <div className="mr-[1rem]">
