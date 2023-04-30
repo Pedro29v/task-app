@@ -1,6 +1,7 @@
 "use client";
 import { createContext, useContext, useState, useEffect } from "react";
 import { v4 as uuid } from "uuid";
+import { toast } from "react-hot-toast";
 
 export const TaskContext = createContext();
 
@@ -42,13 +43,17 @@ export function TaskProvider({ children }) {
   const deleteTask = (id) => {
     const confirm = window.confirm("Are you sure");
 
-    if (confirm) setTasks([...tasks.filter((e) => e.id !== id)]);
+    if (confirm) {
+      setTasks([...tasks.filter((e) => e.id !== id)]);
+      toast.success("Task deleted succesfully");
+    }
   };
 
   const updateTask = (id, newData) => {
     setTasks([
       ...tasks.map((task) => (task.id == id ? { ...task, ...newData } : task)),
     ]);
+    toast.success("Task updated succesfully");
   };
 
   return (
