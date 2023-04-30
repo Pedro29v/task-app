@@ -1,6 +1,5 @@
 import { useRouter } from "next/navigation";
 import { useTask } from "../context/taskContext";
-import { toast } from "react-hot-toast";
 
 function TaskCard({ id, title, description }) {
   const router = useRouter();
