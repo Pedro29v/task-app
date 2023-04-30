@@ -9,7 +9,7 @@ function TaskCard({ id, title, description }) {
   return (
     <>
       <div
-        className="bg-aquaGreen w-[80%]  mb-4 p-2 
+        className="bg-lightBlue w-[80%]  mb-4 p-2 
        m-auto text-white rounded-sm 
        md:flex md:justify-between md:items-center
        "
@@ -17,14 +17,14 @@ function TaskCard({ id, title, description }) {
         <div className="w-[80%]">
           <p
             onClick={() => router.push(`/edit/${id}`)}
-            className="text-[1.3rem] font-bold mb-2"
+            className="text-[1.3rem] font-bold mb-2 hover:cursor-pointer "
           >
             {title}
           </p>
           <p className="mb-6">{description}</p>
         </div>
 
-        <div className="w-[100%] flex justify-center md:bg-red-300 md:w-[10%] md:h-[2.5rem] ">
+        <div className="w-[100%] flex justify-center  md:w-[10%] md:h-[2.5rem] ">
           <button
             onClick={() => deleteTask(id)}
             className="bg-red-500 hover:bg-mintGreen
