@@ -20,7 +20,7 @@ function Navbar() {
         <button
           className="bg-aquaGreen p-2 w-[8rem] 
           rounded-sm font-bold
-           hover:shadow-md
+          hover:shadow-md
           hover:shadow-black
           transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300"
           onClick={() => router.push("/new")}

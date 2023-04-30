@@ -36,27 +36,50 @@ function Page({ params }) {
   }, []);
 
   return (
-    <div>
-      <form className="flex ">
-        <label>Title</label>
-        <input
-          placeholder="Write a title"
-          {...register("title", { required: true })}
-        />
+    <div className="bg-lightBlue w-[80%] md:w-[40%] m-auto p-10 text-white">
+      <form>
+        <div className="mb-4 text-center ">
+          <p>
+            <label className="font-bold">Title</label>
+          </p>
 
-        {errors.title && <span>This field is required</span>}
+          <input
+            placeholder="Write a title"
+            {...register("title", { required: true })}
+            className="w-[12rem] p-2 text-black"
+          />
 
-        <label>Description</label>
-        <textarea
-          placeholder="Write a description"
-          {...register("description", { required: true })}
-        />
+          {errors.title && <span>This field is required</span>}
+        </div>
 
-        {errors.description && <span>This field is required</span>}
+        <div className="mb-6 text-center ">
+          <p>
+            <label className="font-bold">Description</label>
+          </p>
 
-        <button onClick={onSubmit} className="bg-red-500 p-2">
-          Save
-        </button>
+          <textarea
+            placeholder="Write a description"
+            {...register("description", { required: true })}
+            className="w-[12rem] p-2  text-black"
+          />
+
+          {errors.description && <span>This field is required</span>}
+        </div>
+
+        <div className=" text-center ">
+          <button
+            onClick={onSubmit}
+            className="bg-red-500 p-2 w-[7rem] 
+          rounded-sm font-bold
+          hover:shadow-md
+          hover:shadow-black
+          transition ease-in-out delay-150 
+          hover:-translate-y-1 
+          hover:scale-110 duration-300 "
+          >
+            Save
+          </button>
+        </div>
       </form>
     </div>
   );
